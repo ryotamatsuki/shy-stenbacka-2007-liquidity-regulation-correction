@@ -1,0 +1,38 @@
+\section{The reduced banking problem}
+\subsection{Consumers, account types, and market shares}
+There are two banks, indexed by $j\in\{A,B\}$, located at the endpoints of a Hotelling line. Depositors are indexed by location $x\in[0,1]$ and by a liquidity-need probability $\lambda\in[0,1]$. The regulator chooses a maximum risky-account fraction $\delta\in[0,1]$ and a reserve ratio $\rho\in[0,1]$ on risky deposits. A risky account at bank $j$ pays interest $i_j$ if funds are not withdrawn early. If a liquidity need occurs, $\theta_j\in[0,1]$ denotes the amount available per unit deposited, while $v$ is the value of early liquidity. A liquid account is perfectly available but carries fee $f_j$. The bank earns investment return $r$ on the non-reserved portion of risky deposits, and $\tau>0$ is the differentiation parameter.
+
+For a depositor of type $\lambda$ choosing between risky accounts, the source's interior Hotelling share for bank $j$ is
+\begin{equation}\label{eq:xR}
+ x_R(\lambda)=\frac12+\frac{\lambda v(\theta_j-\theta_k)+(1-\lambda)(i_j-i_k)}{2\tau},\qquad k\neq j.
+\end{equation}
+The regulation is implemented by choosing fees so that the depositor with $\lambda=\delta$ is indifferent between the two account types at a given bank. The source's Eq.~(5) is therefore
+\begin{equation}\label{eq:feeidentity}
+ f_j=\delta v(1-\theta_j)-(1-\delta)i_j.
+\end{equation}
+Substituting this identity into the liquid-account share gives
+\begin{equation}\label{eq:xL}
+ x_L=\frac12+\frac{\delta v(\theta_j-\theta_k)+(1-\delta)(i_j-i_k)}{2\tau}.
+\end{equation}
+
+\subsection{Reconstruction of Eq.~(7)}
+Let $A=(1-\rho)r$. After substituting Eqs.~\eqref{eq:feeidentity}--\eqref{eq:xL}, the bank's reduced profit is
+\begin{align}
+\pi_j(i_j;i_k,\theta_j,\theta_k)
+={}&\int_0^\delta \left[A-(1-\lambda)i_j\right]
+\left[\frac12+\frac{\lambda v(\theta_j-\theta_k)+(1-\lambda)(i_j-i_k)}{2\tau}\right]\dd\lambda \notag\\
+&+\left[\delta v(1-\theta_j)-(1-\delta)i_j\right](1-\delta)
+\left[\frac12+\frac{\delta v(\theta_j-\theta_k)+(1-\delta)(i_j-i_k)}{2\tau}\right].
+\label{eq:profit}
+\end{align}
+This is the optimization problem audited below. In taking the derivative of Eq.~\eqref{eq:profit}, the continuation values $\theta_j$ and $\theta_k$ are held fixed, exactly as in the reduced step used by the source. Endogenizing asymmetric reserve responses at this stage would define a different problem.
+
+For compactness define
+\begin{align*}
+ I_1&=\delta-\frac{\delta^2}{2}, &
+ I_2&=\frac{\delta^2}{2}-\frac{\delta^3}{3}, &
+ I_3&=\delta-\delta^2+\frac{\delta^3}{3},\\
+ K&=I_1+(1-\delta)^2=1-\delta+\frac{\delta^2}{2},&&
+ L=I_3+(1-\delta)^3=\frac{1+2(1-\delta)^3}{3}.
+\end{align*}
+For $\delta\in[0,1]$, $K>0$ and $L>0$.
