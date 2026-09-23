@@ -39,3 +39,36 @@ jobs:
             echo "Lean proof placeholder found"
             exit 1
           fi
+
+  manuscript-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install LaTeX toolchain
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y latexmk texlive-latex-extra texlive-fonts-recommended
+      - name: Build main manuscript
+        working-directory: manuscript
+        run: |
+          pdflatex -interaction=nonstopmode -halt-on-error main.tex
+          pdflatex -interaction=nonstopmode -halt-on-error main.tex
+          test -s main.pdf
+      - name: Build verification supplement
+        working-directory: manuscript
+        run: |
+          pdflatex -interaction=nonstopmode -halt-on-error supplement.tex
+          pdflatex -interaction=nonstopmode -halt-on-error supplement.tex
+          test -s supplement.pdf
+      - name: Fail on unresolved references or overfull boxes
+        working-directory: manuscript
+        run: |
+          ! grep -E "Citation .* undefined|Reference .* undefined|There were undefined references|Overfull" main.log
+          ! grep -E "Citation .* undefined|Reference .* undefined|There were undefined references|Overfull" supplement.log
+      - name: Upload manuscript PDFs
+        uses: actions/upload-artifact@v4
+        with:
+          name: manuscript-pdfs
+          path: |
+            manuscript/main.pdf
+            manuscript/supplement.pdf
