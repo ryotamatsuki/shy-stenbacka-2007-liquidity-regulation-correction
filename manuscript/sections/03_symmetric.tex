@@ -1,0 +1,42 @@
+\section{Corrected symmetric rates and fees}
+\begin{proposition}[Symmetric fixed-$\theta$ reduced solution]\label{prop:sym}
+Suppose $\theta_A=\theta_B=\theta$. The unique symmetric intersection of the fixed-$\theta$ reduced best responses is
+\begin{equation}\label{eq:isym}
+\boxed{
+ i^*=\frac{(1-\rho)rI_1+(1-\delta)^2\delta v(1-\theta)-\tau K}{L}.}
+\end{equation}
+The corresponding fee obtained from the source cutoff identity is
+\begin{equation}\label{eq:fsym}
+\boxed{f^*=\delta v(1-\theta)-(1-\delta)i^*.}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Set $i_j=i_k=i^*$ and $\theta_j=\theta_k=\theta$ in Eq.~\eqref{eq:BR}. Equation~\eqref{eq:isym} follows after collecting the two occurrences of $i^*$. Equation~\eqref{eq:fsym} is Eq.~\eqref{eq:feeidentity} evaluated symmetrically.
+\end{proof}
+
+The best-response slope is $1/2$, so the fixed-$\theta$ affine system has a unique intersection. This statement is deliberately narrower than global uniqueness in the original game: it does not rule out equilibria associated with clipped market shares, changes in account participation, or asymmetric reserve feedback that the source does not fully define off path.
+
+\subsection{Rational-expectations reserve response}
+Under the symmetric allocation, the source obtains
+\[
+ w_A^R=w_B^R=\int_0^\delta \frac{\lambda}{2}\dd\lambda=\frac{\delta^2}{4},
+ \qquad q_A^R=q_B^R=\frac{\delta}{2}.
+\]
+Consequently, for $\delta>0$ the liquidity fraction is
+\begin{equation}\label{eq:theta}
+\theta(\rho,\delta)=\min\left\{\frac{2\rho}{\delta},1\right\}.
+\end{equation}
+On the useful-reserve branch $0<\delta<1$ and $0\le\rho\le\delta/2$, substitution of $\theta=2\rho/\delta$ into Eqs.~\eqref{eq:isym}--\eqref{eq:fsym} gives
+\begin{equation}\label{eq:iuseful}
+ i^*=\frac{(1-\rho)rI_1+(1-\delta)^2v(\delta-2\rho)-\tau K}{L},
+\end{equation}
+\begin{equation}\label{eq:fuseful}
+ f^*=v(\delta-2\rho)-(1-\delta)i^*.
+\end{equation}
+Above the clipping boundary, $\theta=1$, so
+\begin{equation}\label{eq:iclipped}
+ i^*_{\mathrm{clip}}=\frac{(1-\rho)rI_1-\tau K}{L},\qquad
+ f^*_{\mathrm{clip}}=-(1-\delta)i^*_{\mathrm{clip}}.
+\end{equation}
+Continuing $2\rho/\delta$ above one would therefore use the wrong branch.

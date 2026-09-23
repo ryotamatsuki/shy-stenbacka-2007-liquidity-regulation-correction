@@ -1,0 +1,73 @@
+\section{Welfare and regulation}
+\subsection{The aggregate-welfare identity}
+The source's symmetric welfare accounting can be reconstructed independently. Interest rates and fees are transfers between banks and depositors and therefore cancel from aggregate surplus. For $\delta>0$, with $\theta$ given by Eq.~\eqref{eq:theta}, aggregate welfare can be written as
+\begin{equation}\label{eq:Wgeneral}
+W=\beta-\frac{\tau}{4}+\frac v2(1-\delta^2)
++\frac v2\theta(\rho,\delta)\delta^2+\delta(1-\rho)r.
+\end{equation}
+On the useful-reserve branch $0\le\rho\le\delta/2$, this becomes the source's Eq.~(14),
+\begin{equation}\label{eq:Wuseful}
+W_I=\beta+\frac v2(1-\delta^2+2\delta\rho)-\frac{\tau}{4}
++\delta(1-\rho)r.
+\end{equation}
+Its partial derivatives are
+\begin{equation}\label{eq:Wpartials}
+\frac{\partial W_I}{\partial\rho}=\delta(v-r),\qquad
+\frac{\partial W_I}{\partial\delta}=(1-\rho)r+v(\rho-\delta),
+\end{equation}
+which reproduce the source's Eq.~(15). The policy correction therefore does not arise from changing the welfare objective.
+
+\subsection{The moving reserve boundary}
+\begin{proposition}[Constrained policy correspondence]\label{prop:planner}
+Assume $r,v\ge0$ and $\delta,\rho\in[0,1]$, with liquidity clipped according to Eq.~\eqref{eq:theta}.
+\begin{enumerate}[label=(\roman*)]
+\item If $v>r>0$, the unique welfare maximizer is
+\[
+(\delta^*,\rho^*)=(1,1/2).
+\]
+\item If $v<r$, the unique welfare maximizer is
+\[
+(\delta^*,\rho^*)=(1,0).
+\]
+\item If $v=r>0$, the welfare-maximizing correspondence is
+\[
+\delta^*=1,\qquad \rho^*\in[0,1/2].
+\]
+\item If $r=0<v$, welfare is maximized whenever the risky accounts that are present are fully liquid in the source's expected-withdrawal sense; on the no-waste branch this is $\rho=\delta/2$. If $r=v=0$, policy is welfare-neutral in this model.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+If $v>r$ and $\delta>0$, Eq.~\eqref{eq:Wpartials} implies that welfare increases in $\rho$ throughout the useful-reserve region. Thus $\rho=\delta/2$. Substitution into Eq.~\eqref{eq:Wuseful} yields
+\begin{equation}\label{eq:Wboundary}
+W_B(\delta)=\beta+\frac v2-\frac{\tau}{4}+r\delta\left(1-\frac\delta2\right).
+\end{equation}
+The derivative along this moving boundary is
+\[
+\frac{\mathrm d W_B}{\mathrm d\delta}=r(1-\delta).
+\]
+For $r>0$, it is positive for $\delta<1$ and zero only at $\delta=1$. In the clipped region $\rho\ge\delta/2$, Eq.~\eqref{eq:Wgeneral} becomes
+\[
+W_C=\beta+\frac v2-\frac{\tau}{4}+\delta(1-\rho)r,
+\]
+which weakly decreases in $\rho$ when $r\ge0$. Hence no point strictly above the clipping boundary improves on $\rho=\delta/2$, establishing part (i) globally over the policy square.
+
+If $v<r$, welfare decreases in $\rho$ on the useful branch, so $\rho=0$. Then
+\[
+W(\delta,0)=\beta+\frac v2(1-\delta^2)-\frac{\tau}{4}+\delta r,
+\]
+whose derivative is $r-v\delta>0$ on $[0,1]$. This proves part (ii). If $v=r>0$, Eq.~\eqref{eq:Wpartials} gives $W_\rho=0$ on the useful branch and $W_\delta=r(1-\delta)$, establishing part (iii). The remaining statements follow directly from Eq.~\eqref{eq:Wgeneral} when $r=0$.
+\end{proof}
+
+For $v>r>0$, compare the corrected optimum to the source candidate
+\[
+\delta_s=\frac{2r}{r+v},\qquad \rho_s=\frac{r}{r+v}.
+\]
+Direct substitution gives the exact gap
+\begin{equation}\label{eq:Wgap}
+W(1,1/2)-W(\delta_s,\rho_s)
+=\frac{r(v-r)^2}{2(r+v)^2}>0.
+\end{equation}
+The likely algebraic source of the discrepancy is visible from Eqs.~\eqref{eq:Wpartials} and \eqref{eq:Wboundary}. Once the constraint $\rho=\delta/2$ binds, $\rho$ moves with $\delta$; the relevant derivative is therefore the total derivative along that boundary, not the partial derivative with respect to $\delta$ holding $\rho$ fixed.
+
+This correction also clarifies the equality case omitted by a strict $v\gtrless r$ statement. When $v=r>0$, all reserve ratios between zero and one half are welfare-equivalent at $\delta=1$. A local display in the source's $v<r$ derivation also uses a maximum where the binding interval restriction requires a minimum; this is a separate display issue and is not needed for Proposition~\ref{prop:planner}.

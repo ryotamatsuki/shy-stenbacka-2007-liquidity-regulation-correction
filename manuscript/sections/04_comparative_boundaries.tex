@@ -1,0 +1,35 @@
+\section{Comparative statics and boundary cases}
+Differentiating Eq.~\eqref{eq:iuseful} on the useful-reserve branch gives
+\begin{align}
+\frac{\partial i^*}{\partial\tau}&=-\frac{K}{L}<0,\label{eq:cstau}\\
+\frac{\partial i^*}{\partial r}&=\frac{(1-\rho)I_1}{L}>0,\label{eq:csr}\\
+\frac{\partial i^*}{\partial\rho}&=-\frac{rI_1+2(1-\delta)^2v}{L}\le0.\label{eq:csrho}
+\end{align}
+For the fee,
+\begin{align}
+\frac{\partial f^*}{\partial\tau}&=\frac{(1-\delta)K}{L}>0,\label{eq:fstau}\\
+\frac{\partial f^*}{\partial r}&=-\frac{(1-\delta)(1-\rho)I_1}{L}<0.\label{eq:fsr}
+\end{align}
+The inequalities in Eqs.~\eqref{eq:csr} and \eqref{eq:fsr} hold for the nondegenerate interior domain $0<\delta<1$ and $\rho<1$. Thus the source's Proposition~1(a) retains the directions of the $\tau$ effects, although the coefficients change. The risky-account rate also continues to fall with a tighter reserve ratio under nondegenerate parameters, consistent with the direction of Proposition~1(b). Proposition~1(c), however, does not survive: both the corrected rate and the fee generally vary with $r$.
+
+The value parameter has unambiguous partial effects on this branch,
+\[
+\frac{\partial i^*}{\partial v}=\frac{(1-\delta)^2(\delta-2\rho)}{L}\ge0,
+\qquad
+\frac{\partial f^*}{\partial v}=\frac{(\delta-2\rho)I_3}{L}\ge0.
+\]
+By contrast, a total derivative with respect to $\delta$ changes the integration moments, the share of account types, and the reserve mapping simultaneously. I therefore do not attach a universal sign to it without additional restrictions.
+
+\subsection{The endpoint $\delta=0$}
+When $\delta=0$, there are no risky accounts, so the risky rate is not an active choice. The generic formula should not be interpreted as an equilibrium rate at this endpoint. The remaining liquid-account fee game is
+\[
+\pi_j=f_j\left[\frac12+\frac{f_k-f_j}{2\tau}\right].
+\]
+It is strictly concave in $f_j$, with best response $f_j=(\tau+f_k)/2$ and unique symmetric affine-demand solution $f^*=\tau$. The reserve ratio is irrelevant because there are no risky deposits.
+
+\subsection{The endpoint $\delta=1$}
+At $\delta=1$, liquid accounts and their fee disappear. The source's Eq.~(11) is undefined because it divides by $1-\delta$. Solving the risky-account rate game directly gives
+\begin{equation}\label{eq:deltaone}
+\boxed{i^*_{\delta=1}=\frac32\left[(1-\rho)r-\tau\right].}
+\end{equation}
+The limit of the corrected reduced expression happens to agree with Eq.~\eqref{eq:deltaone}, but the endpoint result follows from the endpoint instrument set rather than from substituting into an interior formula.
