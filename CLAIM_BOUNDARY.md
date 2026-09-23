@@ -1,13 +1,25 @@
 # Claim Boundary
 
-## Allowed publication-development claims
-- Correct the reduced best response and symmetric equilibrium implied by the printed profit function.
-- Derive corrected comparative statics and separately treat `δ=0`, `δ=1`, reserve clipping, and `v=r`.
-- State source-scope limitations for the full off-equilibrium two-instrument game.
+## Claims the project may make after Stage 8
+- The frozen complete author manuscript's Eq. (7) has the corrected derivative and Hessian stated in the canonical theory freeze.
+- The displayed best response in that manuscript does not solve its Eq. (7).
+- The corrected fixed-θ reduced game has the stated unique one-dimensional maximizers and symmetric intersection.
+- The corrected symmetric rate and fee depend on the investment return (r).
+- Proposition 1's τ directions survive; its r-invariance does not.
+- The source welfare identity and partial derivatives survive.
+- The constrained policy step for (v>r>0) must be optimized along the moving boundary (ρ=δ/2), yielding ((1,1/2)).
+- The (v<r) risky-banking policy survives.
+- Boundary and equality cases are as certified.
 
-## Claims currently prohibited
-- Do not claim complete uniqueness of the original unrestricted bank game without specifying off-path demand and reserve feedback.
-- Do not claim the qualitative welfare mechanism is reversed unless the corrected implementation proves it.
+## Claims the project must not make
+- that the unseen full Wiley VOR has been equation-by-equation checked;
+- that the unrestricted original two-instrument game has a globally unique Nash equilibrium;
+- that source-unprovided clipping, market-exit, or asymmetric reserve continuation rules are part of Shy–Stenbacka;
+- that aggregate-welfare improvement is a Pareto improvement;
+- that generic quadratic/Hotelling best-response algebra is itself a novel theorem;
+- that numerical checks substitute for analytic proofs.
 
-## General boundary
-Until Stage 0 and Stage 4 pass, use language such as “the transferred audit indicates,” “candidate correction,” or “to be independently re-verified.” Do not use “proved,” “corrected theorem,” “published result is false,” or equivalent publication-facing language except when referring explicitly to the historical master-audit finding rather than this repository’s frozen result.
+## Source-language rule
+Until direct VOR comparison is completed, manuscript wording must distinguish
+“the complete author manuscript corresponding to the 2007 article” from the
+“Version of Record.”
