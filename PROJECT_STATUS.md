@@ -3,20 +3,25 @@
 ## Target
 Oz Shy and Rune Stenbacka (2007), “Liquidity Provision and Optimal Bank Regulation.”
 
-## Current stage
-**Stage 0 — Evidence Freeze**
+## Active branch
+`research/stage-14-submission-qa`
 
-## Gate state
-- Repository initialized: PASS
-- Master-audit provenance linked: PASS
-- Independent re-derivation in this repository: NOT STARTED
-- VOR/source freeze: OPEN GATE — VOR equation-level body still requires direct verification.
-- Fresh prior-disclosure audit: NOT STARTED
-- Publication-facing theorem freeze: BLOCKED
-- Manuscript drafting: BLOCKED
+## Canonical workflow
+research-paper-workflow v2.4 @ `63f11a50a13d9328213498a5a6576d00b9bceef7`
 
-## Next gate
-Complete `docs/STAGE_00_EVIDENCE_FREEZE.md`.
+## Current gate
+Stage 1 source/mathematical audit closed with **PASS WITH SOURCE-VERSION QUALIFICATION**.
 
-## Canonicality
-The master audit in `ryotamatsuki/ozshypapers` remains authoritative for the historical audit record. This repository is the publication-development workspace and becomes canonical for its own correction/reassessment claims only after Stage 0 passes.
+## Certified so far
+- Complete author/institution manuscript frozen as the equation-level mathematical source.
+- Eq. (7) independently reconstructed from Eqs. (2)–(6).
+- Direct derivative and Hessian discrepancy independently reproduced.
+- Scope separated into reduced problem, symmetric implementation, and unrestricted original game.
+
+## Open blockers
+- Direct equation-level VOR body comparison remains unavailable.
+- Prior-disclosure/novelty kill gate not yet frozen on this branch.
+- Corrected theorems, boundary cases, welfare, formal verification, manuscript, and submission QA remain open.
+
+## Main
+`main` remains untouched.
