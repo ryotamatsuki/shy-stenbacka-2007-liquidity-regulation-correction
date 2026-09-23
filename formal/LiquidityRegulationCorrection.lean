@@ -37,35 +37,30 @@ theorem L_pos (δ : ℝ) (hδ1 : δ ≤ 1) :
 
 def derivExpanded
     (δ ρ v r τ θj θk i ik : ℝ) : ℝ :=
-  let a := 1-δ
-  let A := (1-ρ)*r
-  let d := θj-θk
-  (-I1 δ/2 + (A*I1 δ - v*d*I2 δ - (2*i-ik)*I3 δ)/(2*τ))
-  + (-a^2/2 + (a^2*δ*v*(1-2*θj+θk) - (2*i-ik)*a^3)/(2*τ))
+  (-I1 δ/2 +
+      (((1-ρ)*r)*I1 δ - v*(θj-θk)*I2 δ - (2*i-ik)*I3 δ)/(2*τ))
+  + (-(1-δ)^2/2 +
+      ((1-δ)^2*δ*v*(1-2*θj+θk) - (2*i-ik)*(1-δ)^3)/(2*τ))
 
 def derivCompact
     (δ ρ v r τ θj θk i ik : ℝ) : ℝ :=
-  let a := 1-δ
-  let A := (1-ρ)*r
-  let d := θj-θk
   -K δ/2
-  + (A*I1 δ - v*d*I2 δ + a^2*δ*v*(1-2*θj+θk)
+  + (((1-ρ)*r)*I1 δ - v*(θj-θk)*I2 δ
+      + (1-δ)^2*δ*v*(1-2*θj+θk)
       - (2*i-ik)*L δ)/(2*τ)
 
 theorem derivative_decomposition
     (δ ρ v r τ θj θk i ik : ℝ) :
     derivExpanded δ ρ v r τ θj θk i ik =
       derivCompact δ ρ v r τ θj θk i ik := by
-  unfold derivExpanded derivCompact K L
+  unfold derivExpanded derivCompact K L I1 I2 I3
   ring
 
 def bestResponse
     (δ ρ v r τ θj θk ik : ℝ) : ℝ :=
-  let a := 1-δ
-  let A := (1-ρ)*r
-  let d := θj-θk
   ik/2 +
-    (A*I1 δ - v*d*I2 δ + a^2*δ*v*(1-2*θj+θk) - τ*K δ)
+    (((1-ρ)*r)*I1 δ - v*(θj-θk)*I2 δ
+      + (1-δ)^2*δ*v*(1-2*θj+θk) - τ*K δ)
       /(2*L δ)
 
 theorem corrected_best_response_foc
@@ -84,12 +79,12 @@ theorem corrected_hessian_negative
     hessian δ τ < 0 := by
   unfold hessian
   have hL : 0 < L δ := L_pos δ hδ1
-  positivity
+  have hneg : -L δ < 0 := neg_lt_zero.mpr hL
+  exact div_neg_of_neg_of_pos hneg hτ
 
 def symmetricRate
     (δ ρ v r τ θ : ℝ) : ℝ :=
-  let a := 1-δ
-  ((1-ρ)*r*I1 δ + a^2*δ*v*(1-θ) - τ*K δ) / L δ
+  (((1-ρ)*r)*I1 δ + (1-δ)^2*δ*v*(1-θ) - τ*K δ) / L δ
 
 def symmetricFee
     (δ ρ v r τ θ : ℝ) : ℝ :=
@@ -106,7 +101,7 @@ theorem symmetric_rate_foc
   ring
 
 def diDr (δ ρ : ℝ) : ℝ := (1-ρ)*I1 δ / L δ
-def dfDr (δ ρ : ℝ) : ℝ := -(1-δ)*(1-ρ)*I1 δ / L δ
+def dfDr (δ ρ : ℝ) : ℝ := -((1-δ)*(1-ρ)*I1 δ) / L δ
 
 theorem corrected_rate_increases_in_r
     (δ ρ : ℝ)
@@ -116,7 +111,7 @@ theorem corrected_rate_increases_in_r
   have hI : 0 < I1 δ := I1_pos δ hδ0 hδ1
   have hL : 0 < L δ := L_pos δ hδ1
   have hrho : 0 < 1-ρ := sub_pos.mpr hρ
-  positivity
+  exact div_pos (mul_pos hrho hI) hL
 
 theorem corrected_fee_decreases_in_r
     (δ ρ : ℝ)
@@ -153,7 +148,7 @@ theorem policy_gap_positive
   unfold policyGap
   have hsum : 0 < r+v := by nlinarith
   have hsq : 0 < (v-r)^2 := sq_pos_of_pos (sub_pos.mpr hvr)
-  positivity
+  exact div_pos (mul_pos hr hsq) (by positivity)
 
 def welfareUseful (β τ v r δ ρ : ℝ) : ℝ :=
   β + v/2*(1-δ^2+2*δ*ρ) - τ/4 + δ*(1-ρ)*r
