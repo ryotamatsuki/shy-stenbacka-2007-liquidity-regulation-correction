@@ -1,0 +1,36 @@
+\section{What survives and what changes}
+Table~\ref{tab:impact} summarizes the dependency map. Two distinctions are important. First, a corrected competitive rate formula and a corrected planner solution are separate results. Second, an aggregate-welfare optimum does not by itself establish that the unrestricted bank game implements that policy.
+
+\begin{table}[ht]
+\centering
+\caption{Impact on the source results}\label{tab:impact}
+\small
+\begin{tabular}{p{0.23\textwidth}p{0.28\textwidth}p{0.37\textwidth}}
+\toprule
+Source item & Status & Reason \\
+\midrule
+Eq.~(8), best response & Requires correction & Does not solve the reconstructed Eq.~(7). \\
+Hessian below Eq.~(7) & Requires correction & Correct curvature is $-L/\tau<0$. \\
+Eqs.~(11)--(12) & Require correction & Corrected symmetric rate and fee are Eqs.~\eqref{eq:iuseful}--\eqref{eq:fuseful}. \\
+Proposition~1(a) & Qualitatively survives & Rate falls and fee rises with $\tau$, with different magnitudes. \\
+Proposition~1(b) & Qualitatively survives & Rate weakly falls with $\rho$ on the useful branch. \\
+Proposition~1(c) & Does not survive & $i_r^*>0$ and $f_r^*<0$ in the nondegenerate interior. \\
+Eqs.~(13)--(15) & Survive & Primitive welfare reconstruction reproduces the identity and partial derivatives. \\
+Proposition~2(a), $v>r>0$ & Requires correction & Moving-boundary optimization gives $(1,1/2)$ and Eq.~\eqref{eq:Wgap}. \\
+Proposition~2(b), $v<r$ & Survives & The optimum is $(1,0)$. \\
+Competitive implementation & Not globally established & Off-path asymmetric/clipped continuation is not fully specified by the source. \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The corrected welfare result is narrower than a Pareto claim. Because rates and fees are transfers in aggregate welfare, an increase in Eq.~\eqref{eq:Wgeneral} does not by itself establish that every depositor type and each bank is weakly better off. I therefore use “aggregate welfare” throughout.
+
+\section{Reproducibility and formal verification}
+The calculations are reproduced by three deliberately different verification paths. First, a symbolic script reconstructs Eq.~\eqref{eq:profit} from the primitive market-share and fee identities and differentiates the integral directly. Second, an independent evaluator uses exact rational arithmetic and evaluates the quadratic risky-profit integrand by exact Simpson quadrature; it verifies the first and second derivatives through exact central differences, the finite deviation at Eq.~\eqref{eq:counterpars}, endpoint games, reserve clipping, and the planner correspondence. Third, a Lean~4/mathlib project certifies the moment identities, the compact derivative decomposition, the corrected first-order condition, the negative Hessian, selected comparative-static signs, the exact $5/96$ witness, the $\delta=1$ algebra, and the positive welfare gap in Eq.~\eqref{eq:Wgap}. The formal layer is intentionally algebraic: it does not encode the economic interpretation or pretend to prove a full off-path banking equilibrium.
+
+\section{Conclusion}
+Direct differentiation of the reduced bank-profit objective used by \citet{ShyStenbacka2007} yields a different best response and Hessian from the formulas displayed in the complete author manuscript corresponding to the article. The corrected reduced problem remains strictly concave, but the symmetric deposit rate and fee change, and the investment return $r$ enters both prices. This invalidates the reported $r$-invariance while preserving the qualitative differentiation-cost effects and, under nondegenerate conditions, the direction of the reserve effect on the risky-account rate.
+
+The regulator block contains a separate issue. The aggregate-welfare identity and its partial derivatives survive, but the $v>r$ problem must be optimized along a moving reserve boundary. For $v>r>0$, the resulting policy is $(\delta,\rho)=(1,1/2)$ rather than the reported mixed-banking interior point. The source's risky-banking conclusion for $v<r$ survives, and the equality case yields a correspondence at $\delta=1$.
+
+These conclusions concern the reduced optimization problem and the symmetric welfare implementation actually written down in the source. They should not be enlarged into a theorem about all asymmetric off-path states without adding rules that the original model does not fully specify. Direct comparison with the Wiley VOR remains the final source-verification step before an unconditional correction claim is submitted.

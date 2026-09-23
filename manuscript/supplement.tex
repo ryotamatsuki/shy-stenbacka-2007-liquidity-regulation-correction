@@ -1,0 +1,60 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,booktabs,array,microtype}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[hidelinks]{hyperref}
+\title{Supplement to “Deposit-Rate Competition and Liquidity Provision”\\Verification and Reproducibility Map}
+\author{Ryota Matsuki}
+\date{}
+\begin{document}
+\maketitle
+
+\section*{S1. Verification architecture}
+The accompanying repository contains three independent verification layers. The production symbolic script reconstructs the reduced profit objective from the market-share and cutoff identities and differentiates it with SymPy. A second implementation uses Python's exact rational arithmetic and exact Simpson evaluation of the quadratic risky-profit integrand; it does not import the symbolic derivative. A Lean~4/mathlib project certifies the proof-critical algebraic identities and selected sign claims.
+
+\section*{S2. Exact regression witness}
+At
+\[
+\delta=\tfrac12,\quad \rho=0,\quad v=1,\quad r=\tfrac12,\quad
+\tau=1,\quad \theta_A=\theta_B=0,
+\]
+the source candidate is $i_A=i_B=-1$. Direct differentiation of the reconstructed reduced objective gives
+\[
+\left.\frac{\partial\pi_A}{\partial i_A}\right|_{(-1,-1)}=\frac5{96}>0.
+\]
+The corrected symmetric stationary rate is $-3/4$. The finite deviation $i_A=-99/100$ raises profit by exactly $1/2000$, while $x_R(\lambda)=101/200-\lambda/200$ and $x_L=201/400$ remain strictly between zero and one.
+
+\section*{S3. Formal certificate map}
+\begin{center}
+\small
+\begin{tabular}{p{0.33\textwidth}p{0.55\textwidth}}
+\toprule
+Lean target & Paper object \\
+\midrule
+Moment normal forms and $L>0$ & Definitions of $I_1,I_2,I_3,K,L$ and strict reduced concavity \\
+Derivative decomposition & Compact corrected derivative after blockwise reconstruction \\
+Corrected best-response FOC & Algebraic zero of the reduced first-order condition \\
+Negative Hessian & $-L/\tau<0$ for $\tau>0$ \\
+Symmetric FOC & Corrected fixed-$\theta$ symmetric rate \\
+$r$ comparative statics & $\partial i^*/\partial r>0$ and $\partial f^*/\partial r<0$ \\
+Exact rational witness & $5/96$ derivative and $-3/4$ corrected rate \\
+Endpoint identity & $\delta=1$ risky-only rate algebra \\
+Policy-gap theorem & $r(v-r)^2/[2(r+v)^2]>0$ when $0<r<v$ \\
+Boundary welfare identity & Welfare after substituting $\rho=\delta/2$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+No theorem contains \texttt{sorry} or \texttt{admit}. The formal layer intentionally leaves source transcription, economic interpretation, active-regime validity, and the unrestricted off-path game outside its scope.
+
+\section*{S4. Reproduction commands}
+\begin{verbatim}
+python -m pip install -r requirements.txt
+python code/stage04_symbolic.py
+python code/stage04a_independent.py
+lake build
+\end{verbatim}
+The GitHub Actions workflow runs both Python paths and the Lean build/axiom audit in a clean hosted environment.
+
+\end{document}

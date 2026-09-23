@@ -1,0 +1,59 @@
+\appendix
+\section{Algebraic details and endpoint derivations}\label{app:algebra}
+This appendix records the two block derivatives behind Proposition~\ref{prop:br} and the endpoint games used in Section~5. For the risky-account block of Eq.~\eqref{eq:profit}, differentiation gives
+\begin{equation}
+-\frac{I_1}{2}+\frac{(1-\rho)rI_1-v(\theta_j-\theta_k)I_2-(2i_j-i_k)I_3}{2\tau}.
+\end{equation}
+The liquid-account block contributes
+\begin{equation}
+-\frac{(1-\delta)^2}{2}+\frac{(1-\delta)^2\delta v(1-2\theta_j+\theta_k)
+ -(2i_j-i_k)(1-\delta)^3}{2\tau}.
+\end{equation}
+Their sum is Eq.~\eqref{eq:derivative}. The two curvature terms similarly add to
+\[
+-\frac{I_3+(1-\delta)^3}{\tau}=-\frac{L}{\tau}.
+\]
+This blockwise representation is useful because it identifies which terms arise from risky-account investment margins and which arise from the fee substitution.
+
+At $\delta=0$, risky accounts disappear and the active game is the liquid-fee problem
+\[
+\pi_j=f_j\left[\frac12+\frac{f_k-f_j}{2\tau}\right].
+\]
+Its best response is $f_j=(\tau+f_k)/2$, yielding $f^*=\tau$. The generic risky-rate formula is economically irrelevant at this endpoint. At $\delta=1$, liquid accounts and the fee instrument disappear. Direct solution of the risky-only rate game gives
+\[
+ i^*_{\delta=1}=\frac32\big[(1-\rho)r-\tau\big].
+\]
+Although this equals the finite limit of the corrected reduced expression, it is derived from the endpoint instrument set rather than by substituting into a formula that presupposes two active account types.
+
+\section{Verification map}\label{app:verification}
+The reproducibility package separates three kinds of certification. The symbolic script differentiates the reconstructed integral objective; the exact-rational evaluator independently checks profit differences, curvature, clipping, and planner boundary cases; and Lean certifies selected algebraic identities and sign statements. The Lean layer does not encode depositor behavior or unrestricted equilibrium existence. In particular, formal certification of the first-order algebra does not supply source-unprovided continuation rules for asymmetric deviations.
+
+\section*{Statements and Declarations}
+\textbf{Funding.} No funding statement is asserted in this draft; the author must confirm the final submission statement.\\
+\textbf{Competing interests.} No competing-interest statement is asserted in this draft; the author must confirm the final submission statement.\\
+\textbf{Data availability.} No empirical data are used. Reproducibility code, exact regression tests, and formal-verification sources accompany the manuscript repository.\\
+\textbf{Use of generative AI.} OpenAI ChatGPT was used as an interactive research and writing aid for algebraic cross-checking, code drafting, literature-search organization, and manuscript editing. All mathematical claims in the paper were separately checked by executable symbolic code, an independent exact-rational evaluator, and/or Lean formal verification as documented in the reproducibility package. The author remains responsible for the research design, source interpretation, claims, and final text.
+
+\begin{thebibliography}{99}
+
+\bibitem[Shy and Stenbacka(2000)]{ShyStenbacka2000}
+Shy, O., and R. Stenbacka (2000).
+“A Bundling Argument for Narrow Banking.” Working paper. DOI: 10.2139/ssrn.2803179.
+
+\bibitem[Shy and Stenbacka(2007)]{ShyStenbacka2007}
+Shy, O., and R. Stenbacka (2007).
+“Liquidity Provision and Optimal Bank Regulation.” \emph{International Journal of Economic Theory} 3(3), 219--233. DOI: 10.1111/j.1742-7363.2007.00057.x.
+
+\bibitem[Shy and Stenbacka(2008)]{ShyStenbacka2008}
+Shy, O., and R. Stenbacka (2008).
+“Rethinking the Roles of Banks: A Call for Narrow Banking.” \emph{The Economists' Voice} 5(2), Article 6.
+
+\bibitem[Shy and Stenbacka(2019)]{ShyStenbacka2019}
+Shy, O., and R. Stenbacka (2019).
+“Bank Competition, Real Investments, and Welfare.” \emph{Journal of Economics} 127(1), 73--90. DOI: 10.1007/s00712-018-0634-0.
+
+\bibitem[Shy and Stenbacka(2024)]{ShyStenbacka2024}
+Shy, O., and R. Stenbacka (2024).
+“Lobbying and Liquidity Requirements: Large versus Small Banks.” \emph{Journal of Financial Stability} 74, 101316. DOI: 10.1016/j.jfs.2024.101316.
+
+\end{thebibliography}
