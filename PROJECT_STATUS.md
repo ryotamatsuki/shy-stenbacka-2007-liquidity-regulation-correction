@@ -7,7 +7,11 @@ Oz Shy and Rune Stenbacka (2007), “Liquidity Provision and Optimal Bank Regula
 `research/stage-14-submission-qa`
 
 ## Canonical workflow
-research-paper-workflow v2.4 @ `63f11a50a13d9328213498a5a6576d00b9bceef7`
+research-paper-workflow v2.5 @ `46d17bc4c1036955103224a5c0358a70edd2cb90` for current/future exposition work; earlier scientific closures remain pinned to their recorded commits
+
+## v2.5 sync
+
+Prospective exposition adoption recorded at `docs/WORKFLOW_V2_5_SYNC.md`. No scientific rollback and no manuscript edit are triggered.
 
 ## Current gate
 Stage 1 source/mathematical audit closed with **PASS WITH SOURCE-VERSION QUALIFICATION**.
